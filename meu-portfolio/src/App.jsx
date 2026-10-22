@@ -134,7 +134,7 @@ const presetToPattern = (preset) => {
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [lang, setLang] = useState("en"); // 'en' ou 'pt'
   const [activeInterest, setActiveInterest] = useState(0);
 
@@ -329,18 +329,49 @@ export default function App() {
               <a className="round-button" href="#experience" aria-label="Explore experience"><ArrowDownRight /></a>
             </div>
           </div>
-          <aside className="hero-aside" data-reveal>
-            <span className="eyebrow">{lang === "pt" ? "UM POUCO SOBRE MIM" : "A LITTLE ABOUT ME"}</span>
-            <p>
-              {lang === "pt"
-                ? "Trabalhei em funcionalidades frontend e projetos web, desde React e TypeScript até sites baseados em WordPress. Fora do código, encontro-me habitualmente ligado à música, a ver NBA ou NFL, ou a aprender sobre som e iluminação ao vivo."
-                : "I've worked on frontend features and website projects, from React and TypeScript to WordPress-based sites. Outside code, you'll usually find me with music, watching the NBA or NFL, or learning about live sound and lighting."}
-            </p>
-            <div className="aside-details">
-              <span>{lang === "pt" ? "Com base em Portugal" : "Based in Portugal"}</span>
-              <span>{lang === "pt" ? "Disponível para novos projetos ↗" : "Open to new opportunities ↗"}</span>
+{/* COLUNA DA DIREITA (FOTO EM CIMA + SOBRE MIM EM BAIXO) */}
+          <div className="hero-right-column" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", gap: "24px" }}>
+            
+            {/* FOTO ÚNICA: BEM LÁ EM CIMA, CENTRADA E ALINHADA COM "FRANCISCO" */}
+            <div 
+              style={{ 
+                display: "flex", 
+                justifyContent: "center", 
+                alignItems: "center",
+                paddingTop: "10px"
+              }} 
+              data-reveal
+            >
+              <img 
+                src="/profile.jpeg" 
+                alt="João Francisco Sousa" 
+                style={{
+                  width: "350px",
+                  height: "350px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  display: "block",
+                  border: "3px solid rgba(255, 255, 255, 0.12)",
+                  boxShadow: "0 16px 36px -8px rgba(0, 0, 0, 0.35)"
+                }}
+              />
             </div>
-          </aside>
+
+            {/* A LITTLE ABOUT ME EM BAIXO (SEM FOTOS DENTRO DELE) */}
+            <aside className="hero-aside" data-reveal>
+              <span className="eyebrow">{lang === "pt" ? "UM POUCO SOBRE MIM" : "A LITTLE ABOUT ME"}</span>
+              <p>
+                {lang === "pt"
+                  ? "Trabalhei em funcionalidades frontend e projetos web, desde React e TypeScript até sites baseados em WordPress. Fora do código, encontro-me habitualmente ligado à música, a ver NBA ou NFL, ou a aprender sobre som e iluminação ao vivo."
+                  : "I've worked on frontend features and website projects, from React and TypeScript to WordPress-based sites. Outside code, you'll usually find me with music, watching the NBA or NFL, or learning about live sound and lighting."}
+              </p>
+              <div className="aside-details">
+                <span>{lang === "pt" ? "Com base em Portugal" : "Based in Portugal"}</span>
+                <span>{lang === "pt" ? "Disponível para novos projetos ↗" : "Open to new opportunities ↗"}</span>
+              </div>
+            </aside>
+
+          </div>
         </div>
         <div className="marquee">
           <div className="marquee-track">
@@ -370,7 +401,6 @@ export default function App() {
             </article>
           ))}
         </div>
-        <p className="cv-note">{lang === "pt" ? "Datas e descrições baseadas no meu CV." : "Dates and descriptions based on my CV."}</p>
       </section>
 
       <section className="about-section" id="about">
@@ -500,7 +530,6 @@ export default function App() {
           <article><span>03</span><h3>{lang === "pt" ? "Desenvolvimento" : "Development"}</h3><p>{lang === "pt" ? "Git · Métodos Agile · Debugging · Melhorias de UX" : "Git · Agile methods · Debugging · UX improvements"}</p></article>
           <article><span>04</span><h3>{lang === "pt" ? "Também a aprender" : "Also learning"}</h3><p>{lang === "pt" ? "Som ao vivo · Iluminação · Produção de palco" : "Live sound · Lighting · Stage production"}</p></article>
         </div>
-        <p className="cv-note">{lang === "pt" ? "Outros detalhes do CV incluem certificados em Java, AWS Cloud Computing e Python." : "Other CV details include Java, AWS Cloud Computing and Python certificates."}</p>
       </section>
 
       <footer className="contact-section page-width" id="contact">
